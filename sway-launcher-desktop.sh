@@ -13,6 +13,7 @@ IFS=$'\n\t'
 DEL=$'\34'
 
 FZF_COMMAND="${FZF_COMMAND:=fzf}"
+FZF_EXTRA_OPTIONS="${FZF_EXTRA_OPTIONS:=}"
 TERMINAL_COMMAND="${TERMINAL_COMMAND:="$TERMINAL -e"}"
 GLYPH_COMMAND="${GLYPH_COMMAND-  }"
 GLYPH_DESKTOP="${GLYPH_DESKTOP-  }"
@@ -317,6 +318,7 @@ done
 
 readarray -t COMMAND_STR <<<$(
   ${FZF_COMMAND} --ansi +s -x -d '\034' --nth ..3 --with-nth 3 \
+    ${FZF_EXTRA_OPTIONS} \
     --print-query \
     --preview "$0 describe {2} {1}" \
     --preview-window="${PREVIEW_WINDOW}" \
